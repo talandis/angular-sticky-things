@@ -236,7 +236,7 @@ export class StickyThingDirective implements OnInit, AfterViewInit, OnDestroy {
     }
     const stickyElementHeight = this.getComputedStyle(this.stickyElement.nativeElement).height;
     const reachedLowerEdge = isNotNullOrUndefined(this.boundaryElement) ? this.boundaryElement && window.pageYOffset + stickyElementHeight + marginBottom >= (originalVals.bottomBoundary - marginTop * 1.0) : undefined;
-    const reachedUpperEdge = isNotNullOrUndefined(this.boundaryElement) ? window.pageYOffset < (this.boundaryElement.offsetTop + marginTop * 1.0) : undefined;
+    const reachedUpperEdge = isNotNullOrUndefined(this.boundaryElement) ? (window.pageYOffset + marginTop * 1.0) < (this.boundaryElement.offsetTop) : undefined;
     this.stickyPosition.emit({...elementPos, upperScreenEdgeAt: pageYOffset, marginBottom, marginTop});
     return {
       isSticky,
